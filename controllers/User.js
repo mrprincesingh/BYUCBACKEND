@@ -3,11 +3,11 @@ const User = require("../models/UserModels");
 const cloudinary= require("cloudinary");
 exports.register = async (req, res) => {
   try {
-    const myCloud= await cloudinary.v2.uploader.upload(req.body.avatar, {
-      folder: "avatars",
-      width:150,
-      crop:"scale",
-    });
+    // const myCloud= await cloudinary.v2.uploader.upload(req.body.avatar, {
+    //   folder: "avatars",
+    //   width:150,
+    //   crop:"scale",
+    // });
     const { name, email, password } = req.body;
 
     let user = await User.findOne({ email: email });
@@ -21,7 +21,7 @@ exports.register = async (req, res) => {
       name,
       email,
       password,
-      avatar: { public_id: myCloud.public_id, url:  myCloud.secure_url },
+      avatar: { public_id:" myCloud.public_id", url:  "myCloud.secure_url" },
     });
 
     const token = await user.generateToken();
