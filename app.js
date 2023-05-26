@@ -8,6 +8,9 @@ app.use(cookieParser())
 
 const car = require("./routes/CarRoute")
 const user = require("./routes/UserRoute");
+app.get("/" , (req, res)=>{
+    res.send("<h1>Working fine</h1>")
+})
 app.use("/api/v1",user)
 app.use("/api/v1",car)
 
