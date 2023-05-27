@@ -71,18 +71,9 @@ const CarSchema = mongoose.Schema({
         type:String,
         required:[true , "Please mention about RegistrationPlace"]
     } ,
-    images:[
-        {
-        public_id:{
-            type:String,
-            required:true
-        },
-        url:{
-            type:String,
-            required:true
-        }
-    }
-],
+    images:{
+        type:String,
+    },
 discription:{
     type:String,
     required:[true , "Please mention the discription"]

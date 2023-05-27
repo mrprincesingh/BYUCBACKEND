@@ -5,11 +5,7 @@ const ApiFeatures = require("../utils/apifeatures");
 const UserModels = require("../models/UserModels");
 exports.createCar = async (req, res) => {
   try {
-    const myCloud= await cloudinary.v2.uploader.upload(req.body.avatar, {
-      folder: "Cars",
-      width:150,
-      crop:"scale",
-    });
+
     const newCarData = {
       carName:req.body.carName,
       modelName:req.body.modelName,
@@ -29,10 +25,7 @@ exports.createCar = async (req, res) => {
       Numberofpreviousbuyers:req.body.Numberofpreviousbuyers,
       RegistrationPlace:req.body.RegistrationPlace,
       discription:req.body.discription,
-      image: {
-        public_id: myCloud.public_id,
-        url: myCloud.secure_url,
-      },
+      images: req.body.images,
       owner: req.user._id,
     };
     const newCar = await CarModel.create(newCarData);
